@@ -33,6 +33,9 @@ app.use(express.static(staticPath));
 app.get('/', (req, res) => {
   res.sendFile(path.join(staticPath, 'LandingPage.html'));
 });
+app.get('/index.html', (req, res) => {
+  res.sendFile(path.join(staticPath, 'index.html'));
+});
 app.get('/services', (req, res) => {
   res.sendFile(path.join(staticPath, 'services.html'));
 });
@@ -44,6 +47,12 @@ app.get('/spif', (req, res) => {
 });
 app.get('/booking', (req, res) => {
   res.sendFile(path.join(staticPath, 'booking.html'));
+});
+app.get('/about', (req, res) => {
+  res.sendFile(path.join(staticPath, 'about.html'));
+});
+app.get('/contact', (req, res) => {
+  res.sendFile(path.join(staticPath, 'contact.html'));
 });
 
 // API: Submit booking (Solar Panel Installation Form and general bookings)
