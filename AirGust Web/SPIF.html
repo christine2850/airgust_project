@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Panel Installation</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="AirGust.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Goldman&family=Roboto:wght@300;400&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Goldman&family=Poppins:wght@100&family=Roboto:wght@300;400&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Goldman&family=League+Spartan:wght@100&family=Poppins:wght@100&family=Roboto:wght@300;400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.iconify.design/1/1.0.7/iconify.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-container">
+        <a class="navbar-brand" href="#">
+            <img src="LogoW.png" alt="AirGust">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Clients</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container back-btn">
+            <div class="back-icon">
+                <a href="services.html">
+                    <iconify-icon icon="mingcute:arrows-left-fill" class="back-arrow"></iconify-icon>
+                    <span class="back-text">Back</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="container solar-ins-form">
+            <h4 class="solar-ins-header">Solar Panel Installation Form:</h4>
+        </div>
+
+        <form class="container form-container" id="myForm" onsubmit="return validateForm()" action="submit_form.php"
+            method="POST">
+            <div class="row first-row">
+                <div class="form-group col-md-3">
+                    <label for="inputName">Full Name</label>
+                    <input type="text" class="form-control" id="inputName" placeholder="Juan Dela Cruz" required>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="inputEmail">Email Address</label>
+                    <input type="email" class="form-control" id="inputEmail" placeholder="juan.delacruz@gmail.com"
+                        required>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="inputContact">Contact No.</label>
+                    <input type="text" class="form-control" id="inputContact" placeholder="XXXXXXXXXXX" required>
+                </div>
+            </div>
+
+
+            <div class="row second-row mt-5 mb-3">
+                <div class="form-group col-md-3">
+                    <h6 class="text-address">Complete Address</h6>
+                </div>
+                <div class="form-group col-md-3"></div>
+                <div class="form-group col-md-3"></div>
+            </div>
+
+            <div class="row second-row mt-3">
+                <div class="form-group col-md-3">
+                    <label for="inputProvince">Province</label>
+                    <div class="position-relative">
+                        <select class="form-control" id="inputProvince" required>
+                            <option value="" selected disabled>Select Option</option>
+                            <option value="1">Metro Manila</option>
+                            <option value="2">Cavite</option>
+                            <option value="3">Bulacan</option>
+                        </select>
+                        <i class="select-icon fas fa-caret-down"></i>
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="inputCity">City</label>
+                    <div class="position-relative">
+                        <select class="form-control" id="inputCity" required>
+                            <option value="" selected disabled>Select Option</option>
+                            <option value="1">Makati</option>
+                            <option value="2">Tagaytay</option>
+                            <option value="3">Malolos</option>
+                        </select>
+                        <i class="select-icon fas fa-caret-down"></i>
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="inputBarangay">Barangay</label>
+                    <div class="position-relative">
+                        <select class="form-control" id="inputBarangay" required>
+                            <option value="" selected disabled>Select Option</option>
+                            <option value="1">Ayala Alabang</option>
+                            <option value="2">Dasmarinas</option>
+                            <option value="3">Sta. Cruz</option>
+                        </select>
+                        <i class="select-icon fas fa-caret-down"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row third-row mt-4">
+                <div class="form-group col-md-3">
+                    <label for="inputUnit">Unit No.</label>
+                    <input type="text" class="form-control" id="inputContact" placeholder="XXXXXXXXXXX" required>
+                </div>
+
+                <div class="col-md-3"></div>
+
+                <div class="col-md-3"></div>
+            </div>
+
+
+            <div class="row second-row mt-5 mb-3">
+                <div class="form-group col-md-3">
+                    <h6 class="text-address">Installation Information</h6>
+                </div>
+                <div class="form-group col-md-3"></div>
+                <div class="form-group col-md-3"></div>
+            </div>
+
+            <div class="row second-row mt-3">
+                <div class="form-group col-md-3">
+                    <label for="inputSystem">Type of System</label>
+                    <div class="position-relative">
+                        <select class="form-control" id="inputSystem" required>
+                            <option value="" selected disabled>Select Option</option>
+                            <option value="1">Sample</option>
+                            <option value="2">Sample</option>
+                            <option value="3">Sample</option>
+                            <option value="1">Sample</option>
+                            <option value="2">Sample</option>
+                        </select>
+                        <i class="select-icon fas fa-caret-down"></i>
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="inputIndustry">Industry</label>
+                    <div class="position-relative">
+                        <select class="form-control" id="inputIndustry" required>
+                            <option value="" selected disabled>Select Option</option>
+                            <option value="1">Sample</option>
+                            <option value="2">Sample</option>
+                            <option value="3">Sample</option>
+                            <option value="1">Sample</option>
+                            <option value="2">Sample</option>
+                        </select>
+                        <i class="select-icon fas fa-caret-down"></i>
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="inputCapacity">Capacity</label>
+                    <div class="position-relative">
+                        <select class="form-control" id="inputCapacity" required>
+                            <option value="" selected disabled>Select Option</option>
+                            <option value="1">Sample</option>
+                            <option value="2">Sample</option>
+                            <option value="3">Sample</option>
+                            <option value="1">Sample</option>
+                            <option value="2">Sample</option>
+                        </select>
+                        <i class="select-icon fas fa-caret-down"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row third-row mt-4">
+                <div class="form-group col-md-3">
+                    <label for="selectDate">Date of Installation</label>
+                    <input type="date" class="form-control" id="selectDate" placeholder="dd/mm/yyyy" required>
+                </div>
+
+                <div class="col-md-3"></div>
+
+                <div class="col-md-3"></div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-md-3 offset-md-5">
+                    <button type="submit" class="form-submit-btn">Book Service</button>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-bg text-center mt-5">
+        <!-- Grid container -->
+        <div class="container p-4">
+
+            <!-- Section: Social media -->
+            <section class="mb-5 mt-5">
+                <!-- Facebook -->
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #00B2FF" href="#!" role="button"><i
+                        class="fab fa-facebook-messenger"></i></a>
+
+                <!-- Twitter -->
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #14171A" href="#!" role="button"><i
+                        class="fab fa-twitter"></i></a>
+
+                <!-- Google -->
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #F4B400" href="#!" role="button"><i
+                        class="fab fa-google"></i></a>
+
+                <!-- Instagram -->
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #E1306C" href="#!" role="button"><i
+                        class="fab fa-instagram"></i></a>
+
+                <!-- Linkedin -->
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #0082ca" href="#!" role="button"><i
+                        class="fab fa-linkedin-in"></i></a>
+                <!-- Github -->
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #333333" href="#!" role="button"><i
+                        class="fab fa-github"></i></a>
+            </section>
+            <!-- Section: Social media -->
+
+            <!-- Section: Links -->
+            <section class="footer-col-links">
+                <!--Grid row-->
+                <div class="row">
+                    <!--Grid column-->
+                    <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                        <i class="fas fa-user-group footer-icon"></i>
+                        <h5 class="footer-label mb-3">Contact Us</h5>
+
+                        <ul class="list-unstyled mb-5 list-alignment">
+                            <li>
+                                <a href="#!" class="footer-text"><i class="fas fa-phone"></i>0977 (740) 3968</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="footer-text"><i class="fas fa-envelope"></i>airgustPh@gmail.com</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                        <i class="fas fa-map-location-dot footer-icon"></i>
+                        <h5 class="footer-label mb-3">Service Area</h5>
+
+                        <ul class="list-unstyled mb-5">
+                            <li>
+                                <a href="#!" class="footer-text">Laguna, Cavite, Batangas, NCR,</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="footer-text">Bulacan and Pampanga</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                        <i class="fas fa-building footer-icon"></i>
+                        <h5 class="footer-label mb-3">Office Hours</h5>
+
+                        <ul class="list-unstyled mb-5">
+                            <li>
+                                <a href="#!" class="footer-text">Monday - Saturday</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="footer-text">8am - 5pm</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+                </div>
+                <!--Grid row-->
+            </section>
+            <!-- Section: Links -->
+
+        </div>
+        <!-- Grid container -->
+
+    </footer>
+    <!-- Copyright -->
+    <footer class="sub-footer justify-content-center">
+        <div class="footer-copyright text-center">
+            <img src="WLogo.png" alt="AirGust" class="footer-logo">
+            <a class="text-white" href="#!">AirGustPH</a>
+            <span class="sub-footer-text">Privacy Terms &amp; Condition</span>
+        </div>
+        <!-- Copyright -->
+    </footer>
+
+    <!-- Footer -->
+    <script>
+        function validateForm() {
+            var form = document.getElementById("myForm");
+            if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add("was-validated");
+            return form.checkValidity();
+        }
+    </script>
+
+    <script src="LandingPage.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+</body>
+
+</html>
