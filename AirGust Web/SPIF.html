@@ -25,7 +25,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
             <img src="LogoW.png" alt="AirGust">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -35,19 +35,19 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About Us</a>
+                    <a class="nav-link" href="/#services">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact Us</a>
+                    <a class="nav-link" href="/#contact">Contact Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
+                    <a class="nav-link" href="/services">Services</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Clients</a>
+                    <a class="nav-link" href="/clients">Clients</a>
                 </li>
             </ul>
         </div>
@@ -56,7 +56,7 @@
     <main class="main-content">
         <div class="container back-btn">
             <div class="back-icon">
-                <a href="services.html">
+                <a href="/services">
                     <iconify-icon icon="mingcute:arrows-left-fill" class="back-arrow"></iconify-icon>
                     <span class="back-text">Back</span>
                 </a>
@@ -67,21 +67,20 @@
             <h4 class="solar-ins-header">Solar Panel Installation Form:</h4>
         </div>
 
-        <form class="container form-container" id="myForm" onsubmit="return validateForm()" action="submit_form.php"
-            method="POST">
+        <form class="container form-container" id="myForm" novalidate>
             <div class="row first-row">
                 <div class="form-group col-md-3">
                     <label for="inputName">Full Name</label>
-                    <input type="text" class="form-control" id="inputName" placeholder="Juan Dela Cruz" required>
+                    <input type="text" class="form-control" id="inputName" name="fullName" placeholder="Juan Dela Cruz" required>
                 </div>
                 <div class="form-group col-md-3">
                     <label for="inputEmail">Email Address</label>
-                    <input type="email" class="form-control" id="inputEmail" placeholder="juan.delacruz@gmail.com"
+                    <input type="email" class="form-control" id="inputEmail" name="email" placeholder="juan.delacruz@gmail.com"
                         required>
                 </div>
                 <div class="form-group col-md-3">
                     <label for="inputContact">Contact No.</label>
-                    <input type="text" class="form-control" id="inputContact" placeholder="XXXXXXXXXXX" required>
+                    <input type="text" class="form-control" id="inputContact" name="contact" placeholder="XXXXXXXXXXX" required>
                 </div>
             </div>
 
@@ -98,7 +97,7 @@
                 <div class="form-group col-md-3">
                     <label for="inputProvince">Province</label>
                     <div class="position-relative">
-                        <select class="form-control" id="inputProvince" required>
+                        <select class="form-control" id="inputProvince" name="province" required>
                             <option value="" selected disabled>Select Option</option>
                             <option value="1">Metro Manila</option>
                             <option value="2">Cavite</option>
@@ -110,7 +109,7 @@
                 <div class="form-group col-md-3">
                     <label for="inputCity">City</label>
                     <div class="position-relative">
-                        <select class="form-control" id="inputCity" required>
+                        <select class="form-control" id="inputCity" name="city" required>
                             <option value="" selected disabled>Select Option</option>
                             <option value="1">Makati</option>
                             <option value="2">Tagaytay</option>
@@ -136,7 +135,7 @@
             <div class="row third-row mt-4">
                 <div class="form-group col-md-3">
                     <label for="inputUnit">Unit No.</label>
-                    <input type="text" class="form-control" id="inputContact" placeholder="XXXXXXXXXXX" required>
+                    <input type="text" class="form-control" id="inputUnit" name="unitNo" placeholder="Unit number" required>
                 </div>
 
                 <div class="col-md-3"></div>
@@ -171,7 +170,7 @@
                 <div class="form-group col-md-3">
                     <label for="inputIndustry">Industry</label>
                     <div class="position-relative">
-                        <select class="form-control" id="inputIndustry" required>
+                        <select class="form-control" id="inputIndustry" name="industry" required>
                             <option value="" selected disabled>Select Option</option>
                             <option value="1">Sample</option>
                             <option value="2">Sample</option>
@@ -201,7 +200,7 @@
             <div class="row third-row mt-4">
                 <div class="form-group col-md-3">
                     <label for="selectDate">Date of Installation</label>
-                    <input type="date" class="form-control" id="selectDate" placeholder="dd/mm/yyyy" required>
+                    <input type="date" class="form-control" id="selectDate" name="installDate" placeholder="dd/mm/yyyy" required>
                 </div>
 
                 <div class="col-md-3"></div>
@@ -214,6 +213,7 @@
                     <button type="submit" class="form-submit-btn">Book Service</button>
                 </div>
             </div>
+            <div id="formMessage" class="mt-3" style="display:none;"></div>
         </form>
     </main>
 
@@ -321,15 +321,36 @@
 
     <!-- Footer -->
     <script>
-        function validateForm() {
-            var form = document.getElementById("myForm");
-            if (form.checkValidity() === false) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
+        const form = document.getElementById("myForm");
+        const formMessage = document.getElementById("formMessage");
+        const API_BASE = window.location.origin;
+
+        form.addEventListener("submit", async function (e) {
+            e.preventDefault();
             form.classList.add("was-validated");
-            return form.checkValidity();
-        }
+            if (!form.checkValidity()) return;
+
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+            data.serviceType = "Solar Panel Installation";
+
+            try {
+                const res = await fetch(API_BASE + "/api/bookings", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data)
+                });
+                const result = await res.json();
+                formMessage.style.display = "block";
+                formMessage.className = "mt-3 alert alert-" + (result.success ? "success" : "danger");
+                formMessage.textContent = result.message || (result.success ? "Booking submitted successfully!" : "Something went wrong.");
+                if (result.success) form.reset();
+            } catch (err) {
+                formMessage.style.display = "block";
+                formMessage.className = "container mt-3 alert alert-danger";
+                formMessage.textContent = "Failed to submit. Is the server running?";
+            }
+        });
     </script>
 
     <script src="LandingPage.js"></script>
